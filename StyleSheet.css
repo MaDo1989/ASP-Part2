@@ -1,0 +1,31 @@
+﻿#footer {
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-size: x-small;
+    padding: 5em;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+table {
+    margin: 0px auto;
+}
+
+input {
+    margin: 0px auto;
+    display: block;
+}
+
+#logo {
+    width: 50px;
+    height: 20px;
+}
