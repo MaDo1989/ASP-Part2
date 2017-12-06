@@ -9,21 +9,36 @@ using System.Web.UI.WebControls;
 public partial class ShowProducts : System.Web.UI.Page
 {
     List<CheckBox> cbList = new List<CheckBox>();
+    List<Product> cart = new List<Product>();
     List<Product> allProducts;
     double discount;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        Product p = new Product();
+        bool ans;
         if (Request.Cookies["UserType"] != null)
         {
-            discount = 0.2;
+            //
+            if (Request.Cookies["UserType"].Value == "first")
+            {
+                ans = false;
+            }
+            else
+            {
+                ans = true;
+            }
+            Response.Cookies["UserType"].Value = "else";
+            Response.Cookies["UserType"].Expires = DateTime.Now.AddYears(999);
         }
         else
         {
-            Response.Cookies["UserType"].Value = "return";
+            Response.Cookies["UserType"].Value = "first";
             Response.Cookies["UserType"].Expires = DateTime.Now.AddYears(999);
-            discount = 0.5;
+            ans = false;
         }
+        discount = p.discount(ans);
 
         Product import = new Product();
         allProducts = import.getProducts();
@@ -54,18 +69,15 @@ public partial class ShowProducts : System.Web.UI.Page
                 Label dPrice = new Label();
                 if (i + j == 0)
                 {
-                    double SalePrice = allProducts[i + j].Price * (1 - discount);
-                    dPrice.Text = SalePrice.ToString() + "<br/>";
+                    allProducts[i + j].Price *= (1 - discount);
                 }
-                else
-                {
-                    dPrice.Text = allProducts[i + j].Price.ToString() + "<br/>";
-                }
+                dPrice.Text = allProducts[i + j].Price.ToString() + "<br/>";
 
                 Label dInv = new Label();
                 dInv.Text = allProducts[i + j].Inventory.ToString();
 
                 CheckBox dCB = new CheckBox();
+                dCB.AutoPostBack = false;
                 cbList.Add(dCB);
                 dCB.ID = (i + j).ToString();
 
@@ -89,7 +101,11 @@ public partial class ShowProducts : System.Web.UI.Page
 
     protected void Checkout_Click(object sender, EventArgs e)
     {
-        List<Product> cart = new List<Product>();
+        if (true)
+        {
+
+        }
+
         for (int i = 0; i < cbList.Count; i++)
         {
             if (cbList[i].Checked)
@@ -97,5 +113,9 @@ public partial class ShowProducts : System.Web.UI.Page
                 cart.Add(allProducts[i]);
             }
         }
+
+        Session["cart"] = cart;
+        Response.Redirect("Cart.aspx");
+        //Server.Transfer("Cart.aspx");
     }
 }

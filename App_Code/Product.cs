@@ -31,6 +31,17 @@ public class Product
         set { title = value; }
     }
 
+    public double discount(bool b)
+    {
+        if (b)
+        {
+            return 0.2;
+        }
+        else
+        {
+            return 0.5;
+        }
+    }
 
     private string imagePath;
 

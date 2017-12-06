@@ -41,6 +41,7 @@
                         <li><a href="ShowProducts.aspx">The House Store</a></li>
                         <li><a href="NewProduct.aspx">New Product</a></li>
                         <li><a href="Payment.aspx">Payments</a></li>
+                        <li><a href="Cart.aspx">Cart</a></li>
                     </ul>
                 </div>
             </div>

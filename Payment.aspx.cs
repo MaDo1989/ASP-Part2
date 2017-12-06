@@ -9,6 +9,11 @@ public partial class Payment : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["price"] != null)
+        {
+            finalPrice.Text = "The total price is: "+ Session["price"].ToString();
+        }
+
         if (visaCB.Checked)
         {
             paymentsDDL.Visible = true;
@@ -89,7 +94,8 @@ public partial class Payment : System.Web.UI.Page
     protected void payBTN_Click(object sender, EventArgs e)
     {
         string name = signFU.FileName;
-        string path = Server.MapPath("."); 
-        signFU.SaveAs(path + "/images/" + name); 
+        string path = Server.MapPath(".");
+        signFU.SaveAs(path + "\\images\\" + name);
+        Response.Write("<script>alert('Your purchase has been completed')</script>");
     }
 }

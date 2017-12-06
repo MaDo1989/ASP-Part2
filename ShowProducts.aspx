@@ -13,8 +13,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="myBody" ContentPlaceHolderID="body" runat="server">
-
+   
     <asp:PlaceHolder runat="server" ID="ph"></asp:PlaceHolder>
-    <asp:Button Text="Checkout" runat="server" OnClick="Checkout_Click" />
+    <asp:Button text="Checkout" runat="server" OnClick="Checkout_Click" />
     <br />
 </asp:Content>

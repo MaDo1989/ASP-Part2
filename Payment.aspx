@@ -39,12 +39,7 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                    <asp:FileUpload ID="signFU" runat="server" />
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-                <asp:Button Text="Upload" runat="server" />
+                <asp:FileUpload ID="signFU" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -96,7 +91,9 @@
         <asp:TableRow>
             <asp:TableCell>
                 <br />
-                <asp:Button Text="Pay" ID="payBTN" runat="server" OnClick="payBTN_Click"/>
+                <asp:Label ID="finalPrice" runat="server"></asp:Label>
+                <br />
+                <asp:Button Text="Pay" ID="payBTN" runat="server" OnClick="payBTN_Click" />
                 <br />
             </asp:TableCell>
         </asp:TableRow>
